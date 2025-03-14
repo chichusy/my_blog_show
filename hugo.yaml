@@ -15,18 +15,18 @@ hasCJKLanguage: false
 languages:
     en:
         languageName: English
-        title: Example Site
+        title: wsy's personal blog
         weight: 1
         params:
             sidebar:
-                subtitle: Example description
+                subtitle: xxxxxxx
     zh-cn:
         languageName: 中文
-        title: 演示站点
+        title: wsy的个人博客
         weight: 2
         params:
             sidebar:
-                subtitle: 演示说明
+                subtitle: 你好，这是我的个性签名，博客网站还在搭建中~
     ar:
         languageName: عربي
         languagedirection: rtl
@@ -72,7 +72,7 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            src: img/tx.jpg
 
     article:
         math: false
