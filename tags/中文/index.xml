@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>中文 on 王涑毓的个人博客</title>
+        <link>https://example.com/tags/%E4%B8%AD%E6%96%87/</link>
+        <description>Recent content in 中文 on 王涑毓的个人博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Wang Suyu</copyright>
+        <lastBuildDate>Sun, 13 Apr 2025 14:44:25 +0800</lastBuildDate><atom:link href="https://example.com/tags/%E4%B8%AD%E6%96%87/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>First_test</title>
+        <link>https://example.com/p/first_test/</link>
+        <pubDate>Sun, 13 Apr 2025 14:44:25 +0800</pubDate>
+        
+        <guid>https://example.com/p/first_test/</guid>
+        <description>&lt;img src="https://example.com/p/first_test/test.png" alt="Featured image of post First_test" /&gt;&lt;h3 id=&#34;标题&#34;&gt;标题
+&lt;/h3&gt;&lt;h2 id=&#34;标题2&#34;&gt;标题2
+&lt;/h2&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
