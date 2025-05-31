@@ -71,9 +71,9 @@ visited数组：visited[i]表示i号元素是否被访问过（visited[i]==1表�
 
 ## Python实现
 
-![2016_10_19400635-3825-4ce7-84ee-a7f46f7f56d2](https://images2015.cnblogs.com/blog/531939/201610/531939-20161018150549623-1598865657.png)
+![1](1.png)
 
-![img](https://images2015.cnblogs.com/blog/531939/201610/531939-20161018185357295-1876926903.png)
+![2](2.png)
 
 ```python
 def dijkstra(graph,start_index,max):
