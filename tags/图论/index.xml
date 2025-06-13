@@ -13,7 +13,7 @@
         <pubDate>Sun, 27 Apr 2025 14:44:25 +0800</pubDate>
         
         <guid>https://example.com/p/a%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/</guid>
-        <description>&lt;img src="https://example.com/p/a%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/index.jpg" alt="Featured image of post A*算法原理及Python实现" /&gt;&lt;h1 id=&#34;迪杰斯特拉算法原理及python实现&#34;&gt;迪杰斯特拉算法原理及Python实现
+        <description>&lt;img src="https://example.com/p/a%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/index.jpg" alt="Featured image of post A*算法原理及Python实现" /&gt;&lt;h1 id=&#34;a算法原理及python实现&#34;&gt;A*算法原理及Python实现
 &lt;/h1&gt;&lt;hr&gt;
 &lt;h2 id=&#34;算法简介&#34;&gt;算法简介
 &lt;/h2&gt;&lt;p&gt;A*算法是一种用于求解&lt;strong&gt;最短路径&lt;/strong&gt;问题的启发式搜索算法，广泛应用于机器人路径规划、游戏地图寻路等场景。与 Dijkstra 算法不同，A* 算法结合了实际路径代价和启发式估计，从而能更高效地找到从起点到终点的最优路径。&lt;/p&gt;
@@ -918,12 +918,12 @@
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>Dijkstra原理及Python实现</title>
-        <link>https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/</link>
+        <title>Dijkstra算法原理及Python实现</title>
+        <link>https://example.com/p/dijkstra%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/</link>
         <pubDate>Sun, 13 Apr 2025 14:44:25 +0800</pubDate>
         
-        <guid>https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/</guid>
-        <description>&lt;img src="https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/index.png" alt="Featured image of post Dijkstra原理及Python实现" /&gt;&lt;h1 id=&#34;迪杰斯特拉算法原理及python实现&#34;&gt;迪杰斯特拉算法原理及Python实现
+        <guid>https://example.com/p/dijkstra%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/</guid>
+        <description>&lt;img src="https://example.com/p/dijkstra%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/index.png" alt="Featured image of post Dijkstra算法原理及Python实现" /&gt;&lt;h1 id=&#34;迪杰斯特拉算法原理及python实现&#34;&gt;迪杰斯特拉算法原理及Python实现
 &lt;/h1&gt;&lt;hr&gt;
 &lt;h2 id=&#34;算法简介&#34;&gt;算法简介
 &lt;/h2&gt;&lt;p&gt;迪杰斯特拉（Dijkstra）算法主要用于求解&lt;strong&gt;没有负值&lt;/strong&gt;的有向图的&lt;strong&gt;单源最短路径&lt;/strong&gt;问题。&lt;/p&gt;
@@ -972,34 +972,8 @@
 &lt;/h3&gt;&lt;p&gt;访问所有还未被访问的节点，若从当前节点“到此节点的代价更小，则更新cost数组和path数组&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;python实现&#34;&gt;Python实现
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/1.png&#34;
-	width=&#34;585&#34;
-	height=&#34;464&#34;
-	srcset=&#34;https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/1_hu_bcdd4d2e85851482.png 480w, https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/1_hu_27f5cc2a2655bc68.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;1&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;126&#34;
-		data-flex-basis=&#34;302px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/2.png&#34;
-	width=&#34;476&#34;
-	height=&#34;297&#34;
-	srcset=&#34;https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/2_hu_a54f327fe3d12658.png 480w, https://example.com/p/dijkstra%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/2_hu_a30ee127c1ca8427.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;2&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;160&#34;
-		data-flex-basis=&#34;384px&#34;
-	
-&gt;&lt;/p&gt;
+&lt;/h2&gt;&lt;img src=&#34;C:\Users\wsy\Downloads\1.png&#34; alt=&#34;1&#34; style=&#34;zoom:150%;&#34; /&gt;
+&lt;img src=&#34;2.png&#34; alt=&#34;2&#34; style=&#34;zoom: 50%;&#34; /&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1

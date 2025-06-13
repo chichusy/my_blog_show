@@ -1,7 +1,7 @@
 ---
 date : '2025-04-13T14:44:25+08:00'
 draft : false
-title : 'Dijkstra原理及Python实现'
+title : 'Dijkstra算法原理及Python实现'
 image: index.png
 categories:
   - 学习
@@ -71,9 +71,9 @@ visited数组：visited[i]表示i号元素是否被访问过（visited[i]==1表�
 
 ## Python实现
 
-![1](1.png)
+<img src="C:\Users\wsy\Downloads\1.png" alt="1" style="zoom:150%;" />
 
-![2](2.png)
+<img src="2.png" alt="2" style="zoom: 50%;" />
 
 ```python
 def dijkstra(graph,start_index,max):
