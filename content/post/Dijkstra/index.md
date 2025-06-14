@@ -71,7 +71,7 @@ visited数组：visited[i]表示i号元素是否被访问过（visited[i]==1表�
 
 ## Python实现
 
-<img src="C:\Users\wsy\Downloads\1.png" alt="1" style="zoom:150%;" />
+<img src="1.png" alt="1" style="zoom: 150%;" />
 
 <img src="2.png" alt="2" style="zoom: 50%;" />
 
