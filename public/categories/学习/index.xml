@@ -918,6 +918,108 @@
 &lt;/div&gt;</description>
         </item>
         <item>
+        <title>线性回归解析解的推导</title>
+        <link>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</link>
+        <pubDate>Tue, 22 Apr 2025 14:44:25 +0800</pubDate>
+        
+        <guid>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</guid>
+        <description>&lt;img src="https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.png" alt="Featured image of post 线性回归解析解的推导" /&gt;&lt;h1 id=&#34;线性回归解析解的推导&#34;&gt;线性回归解析解的推导
+&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;问题形式化&#34;&gt;问题形式化
+&lt;/h2&gt;&lt;p&gt;我们要做的是：
+首先给定一组数据
+&lt;/p&gt;
+$$
+(X,y)\quad其中X∈R^{n×d}，y∈R^n
+$$&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;要拟合一个线性模型
+&lt;/p&gt;
+$$
+y=Xw+b
+$$&lt;p&gt;
+找到使预测和真实值之间&lt;strong&gt;均方误差最小&lt;/strong&gt;的&lt;strong&gt;w&lt;/strong&gt;和&lt;strong&gt;b&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;其次，把每个样本的特征后面加上一列全是1的列，这样就可以把&lt;strong&gt;b&lt;/strong&gt;作为&lt;strong&gt;w&lt;/strong&gt;的一部分处理了。&lt;/p&gt;
+&lt;p&gt;所以，如果原始 &lt;strong&gt;X&lt;/strong&gt; 是 n×d 矩阵，我们构造
+&lt;/p&gt;
+$$
+{X} = [X \quad \mathbf{1}]
+$$&lt;p&gt;其中 &lt;strong&gt;1&lt;/strong&gt;是 n×1 的全1列向量。
+此时参数
+&lt;/p&gt;
+$$
+~\tilde{w} 为(d+1) \times 1向量，最后一个元素就是b
+$$&lt;hr&gt;
+&lt;h2 id=&#34;写出目标函数&#34;&gt;写出目标函数
+&lt;/h2&gt;&lt;p&gt;线性回归的目标是最小化残差平方和（MSE）：
+&lt;/p&gt;
+$$
+L(\tilde{w}) = \| y - \tilde{X}\tilde{w} \|^2
+$$&lt;p&gt;
+将其写成矩阵相乘的形式：
+&lt;/p&gt;
+$$
+L(w)=∥y−Xw∥^2=(y−Xw) ^⊤(y−Xw)
+$$&lt;p&gt;
+展开目标函数为：
+&lt;/p&gt;
+$$
+L(w)=y^⊤y−2y^⊤Xw+w^⊤X^⊤Xw
+$$&lt;p&gt;
+其中：
+&lt;/p&gt;
+$$
+𝑦^⊤𝑦y^⊤y 是常数项
+$$$$
+−2𝑦^⊤𝑋𝑤−2y^⊤Xw 是一次项
+$$$$
+w^⊤X^⊤Xw 是二次项
+$$&lt;hr&gt;
+&lt;h2 id=&#34;解出解析解&#34;&gt;解出解析解
+&lt;/h2&gt;&lt;p&gt;现在来&lt;strong&gt;对每一项分别求导&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+y^\top y：跟w无关，导数是0
+$$$$
+-2y^\top Xw：对w求导，就是-2X^\top y
+$$$$
+w^\top X^\top Xw ：对w求导，就是 2X^\top X w
+$$&lt;hr&gt;
+&lt;p&gt;这样，整个损失函数对w的导数是：
+&lt;/p&gt;
+$$
+\frac{\partial L}{\partial w} = 0 - 2X^\top y + 2X^\top X w\\= 2X^\top X w - 2X^\top y
+$$&lt;p&gt;
+零其为0，得
+&lt;/p&gt;
+$$
+X^⊤Xw=X^⊤y
+$$&lt;p&gt;
+两边左乘
+&lt;/p&gt;
+$$
+(𝑋^⊤𝑋)^{−1}
+$$&lt;p&gt;
+得到
+&lt;/p&gt;
+$$
+w=(X^⊤X)^{−1}X^⊤y
+$$&lt;hr&gt;
+&lt;h2 id=&#34;附&#34;&gt;附
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;矩阵相乘展开：&lt;/strong&gt;
+&lt;/p&gt;
+$$
+(a−b)^⊤(a−b)=a^⊤a−a^⊤b−b^⊤a+b^⊤b\\因为𝑎^⊤𝑏和𝑏^⊤𝑎是标量（它们互为转置，结果相同），所以上面中间两项可以合并为：\\𝑎⊤𝑎−2𝑎⊤𝑏+𝑏⊤𝑏
+$$&lt;p&gt;
+&lt;strong&gt;矩阵求导基础：&lt;/strong&gt;
+&lt;/p&gt;
+$$
+\frac{\partial}{\partial w}(w^\top A w) = 2Aw\quad（其中 A 是对称矩阵）
+$$$$
+\frac{\partial}{\partial w}(b^\top w) = b\quad（b 是和 w 维度相同的向量）
+$$</description>
+        </item>
+        <item>
         <title>Dijkstra算法原理及Python实现</title>
         <link>https://example.com/p/dijkstra%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/</link>
         <pubDate>Sun, 13 Apr 2025 14:44:25 +0800</pubDate>
