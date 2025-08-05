@@ -8,12 +8,12 @@
         <language>zh-cn</language>
         <copyright>Wang Suyu</copyright>
         <lastBuildDate>Tue, 05 Aug 2025 14:44:25 +0800</lastBuildDate><atom:link href="https://example.com/categories/%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>线性回归解析解的推导</title>
-        <link>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</link>
+        <title>创建一个深度学习虚拟环境（包含d2l包）</title>
+        <link>https://example.com/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/</link>
         <pubDate>Tue, 05 Aug 2025 14:44:25 +0800</pubDate>
         
-        <guid>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</guid>
-        <description>&lt;img src="https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.jpg" alt="Featured image of post 线性回归解析解的推导" /&gt;&lt;h1 id=&#34;创建一个深度学习虚拟环境包含d2l包&#34;&gt;创建一个深度学习虚拟环境（包含d2l包）
+        <guid>https://example.com/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/</guid>
+        <description>&lt;img src="https://example.com/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/index.jpg" alt="Featured image of post 创建一个深度学习虚拟环境（包含d2l包）" /&gt;&lt;h1 id=&#34;创建一个深度学习虚拟环境包含d2l包&#34;&gt;创建一个深度学习虚拟环境（包含d2l包）
 &lt;/h1&gt;&lt;hr&gt;
 &lt;h2 id=&#34;step1&#34;&gt;Step1
 &lt;/h2&gt;&lt;p&gt;创建一个名为“d2l_env”的虚拟环境并激活（推荐 Python 3.9，兼容性最佳）：&lt;/p&gt;
@@ -78,10 +78,10 @@
         <item>
         <title>线性回归解析解的推导</title>
         <link>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</link>
-        <pubDate>Tue, 05 Aug 2025 14:44:25 +0800</pubDate>
+        <pubDate>Mon, 04 Aug 2025 14:44:25 +0800</pubDate>
         
         <guid>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</guid>
-        <description>&lt;img src="https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.jpg" alt="Featured image of post 线性回归解析解的推导" /&gt;&lt;h1 id=&#34;线性回归解析解的推导&#34;&gt;线性回归解析解的推导
+        <description>&lt;img src="https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.png" alt="Featured image of post 线性回归解析解的推导" /&gt;&lt;h1 id=&#34;线性回归解析解的推导&#34;&gt;线性回归解析解的推导
 &lt;/h1&gt;&lt;hr&gt;
 &lt;h2 id=&#34;问题形式化&#34;&gt;问题形式化
 &lt;/h2&gt;&lt;p&gt;我们要做的是：

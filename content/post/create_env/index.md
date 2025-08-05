@@ -1,7 +1,7 @@
 ---
 date : '2025-08-05T14:44:25+08:00'
 draft : false
-title : '线性回归解析解的推导'
+title : '创建一个深度学习虚拟环境（包含d2l包）'
 image: index.jpg
 categories:
   - 学习

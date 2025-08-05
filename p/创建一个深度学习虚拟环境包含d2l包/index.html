@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$$$\n$$\n要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n">
-<title>线性回归解析解的推导</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="创建一个深度学习虚拟环境（包含d2l包） Step1 创建一个名为“d2l_env”的虚拟环境并激活（推荐 Python 3.9，兼容性最佳）：\n1 conda create -n d2l_env python=3.9 1 conda activate d2l_env Step2 使用pip安装pytorch（最新版的pytorch已经不支持conda安装，故采用pip）：\n">
+<title>创建一个深度学习虚拟环境（包含d2l包）</title>
 
-<link rel='canonical' href='https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/'>
+<link rel='canonical' href='https://example.com/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/'>
 
-<link rel="stylesheet" href="/scss/style.min.76d56cb8dfd27db635f813412aada78a21b66f7863415f1fa2503126dbbf502d.css"><meta property='og:title' content="线性回归解析解的推导">
-<meta property='og:description' content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$$$\n$$\n要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n">
-<meta property='og:url' content='https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/'>
+<link rel="stylesheet" href="/scss/style.min.76d56cb8dfd27db635f813412aada78a21b66f7863415f1fa2503126dbbf502d.css"><meta property='og:title' content="创建一个深度学习虚拟环境（包含d2l包）">
+<meta property='og:description' content="创建一个深度学习虚拟环境（包含d2l包） Step1 创建一个名为“d2l_env”的虚拟环境并激活（推荐 Python 3.9，兼容性最佳）：\n1 conda create -n d2l_env python=3.9 1 conda activate d2l_env Step2 使用pip安装pytorch（最新版的pytorch已经不支持conda安装，故采用pip）：\n">
+<meta property='og:url' content='https://example.com/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/'>
 <meta property='og:site_name' content='王涑毓的个人博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='算法' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-08-04T14:44:25&#43;08:00'/><meta property='article:modified_time' content='2025-08-04T14:44:25&#43;08:00'/><meta property='og:image' content='https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.png' />
-<meta name="twitter:title" content="线性回归解析解的推导">
-<meta name="twitter:description" content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$$$\n$$\n要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='工程实践' /><meta property='article:published_time' content='2025-08-05T14:44:25&#43;08:00'/><meta property='article:modified_time' content='2025-08-05T14:44:25&#43;08:00'/><meta property='og:image' content='https://example.com/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/index.jpg' />
+<meta name="twitter:title" content="创建一个深度学习虚拟环境（包含d2l包）">
+<meta name="twitter:description" content="创建一个深度学习虚拟环境（包含d2l包） Step1 创建一个名为“d2l_env”的虚拟环境并激活（推荐 Python 3.9，兼容性最佳）：\n1 conda create -n d2l_env python=3.9 1 conda activate d2l_env Step2 使用pip安装pytorch（最新版的pytorch已经不支持conda安装，故采用pip）：\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/index.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -262,10 +262,11 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#问题形式化">问题形式化</a></li>
-    <li><a href="#写出目标函数">写出目标函数</a></li>
-    <li><a href="#解出解析解">解出解析解</a></li>
-    <li><a href="#附">附</a></li>
+    <li><a href="#step1">Step1</a></li>
+    <li><a href="#step2">Step2</a></li>
+    <li><a href="#step3">Step3</a></li>
+    <li><a href="#step4">Step4</a></li>
+    <li><a href="#step5">Step5</a></li>
   </ol>
 </nav>
         </div>
@@ -280,13 +281,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/">
-                <img src="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_419d4caa948a2b41.png"
-                        srcset="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_419d4caa948a2b41.png 800w, /p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_9e95beb15ad3c24d.png 1600w"
+            <a href="/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/">
+                <img src="/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/index_hu_b0ee0f924b37aa7f.jpg"
+                        srcset="/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/index_hu_b0ee0f924b37aa7f.jpg 800w, /p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/index_hu_f12b0be0d5168452.jpg 1600w"
                         width="800" 
-                        height="193" 
+                        height="534" 
                         loading="lazy"
-                        alt="Featured image of post 线性回归解析解的推导" />
+                        alt="Featured image of post 创建一个深度学习虚拟环境（包含d2l包）" />
                 
             </a>
         </div>
@@ -305,7 +306,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/">线性回归解析解的推导</a>
+            <a href="/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/">创建一个深度学习虚拟环境（包含d2l包）</a>
         </h2>
     
         
@@ -327,7 +328,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-08-04</time>
+                <time class="article-time--published">2025-08-05</time>
             </div>
         
 
@@ -342,7 +343,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 1 分钟
                 </time>
             </div>
         
@@ -357,101 +358,67 @@
     <section class="article-content">
     
     
-    <h1 id="线性回归解析解的推导">线性回归解析解的推导
+    <h1 id="创建一个深度学习虚拟环境包含d2l包">创建一个深度学习虚拟环境（包含d2l包）
 </h1><hr>
-<h2 id="问题形式化">问题形式化
-</h2><p>我们要做的是：
-首先给定一组数据
-</p>
-$$
-(X,y)\quad其中X∈R^{n×d}，y∈R^n
-$$<p>$$</p>
-<p>$$</p>
-<p>要拟合一个线性模型
-</p>
-$$
-y=Xw+b
-$$<p>
-找到使预测和真实值之间<strong>均方误差最小</strong>的<strong>w</strong>和<strong>b</strong>。</p>
-<p>其次，把每个样本的特征后面加上一列全是1的列，这样就可以把<strong>b</strong>作为<strong>w</strong>的一部分处理了。</p>
-<p>所以，如果原始 <strong>X</strong> 是 n×d 矩阵，我们构造
-</p>
-$$
-{X} = [X \quad \mathbf{1}]
-$$<p>其中 <strong>1</strong>是 n×1 的全1列向量。
-此时参数
-</p>
-$$
-~\tilde{w} 为(d+1) \times 1向量，最后一个元素就是b
-$$<hr>
-<h2 id="写出目标函数">写出目标函数
-</h2><p>线性回归的目标是最小化残差平方和（MSE）：
-</p>
-$$
-L(\tilde{w}) = \| y - \tilde{X}\tilde{w} \|^2
-$$<p>
-将其写成矩阵相乘的形式：
-</p>
-$$
-L(w)=∥y−Xw∥^2=(y−Xw) ^⊤(y−Xw)
-$$<p>
-展开目标函数为：
-</p>
-$$
-L(w)=y^⊤y−2y^⊤Xw+w^⊤X^⊤Xw
-$$<p>
-其中：
-</p>
-$$
-𝑦^⊤𝑦y^⊤y 是常数项
-$$$$
-−2𝑦^⊤𝑋𝑤−2y^⊤Xw 是一次项
-$$$$
-w^⊤X^⊤Xw 是二次项
-$$<hr>
-<h2 id="解出解析解">解出解析解
-</h2><p>现在来<strong>对每一项分别求导</strong>：
-</p>
-$$
-y^\top y：跟w无关，导数是0
-$$$$
--2y^\top Xw：对w求导，就是-2X^\top y
-$$$$
-w^\top X^\top Xw ：对w求导，就是 2X^\top X w
-$$<hr>
-<p>这样，整个损失函数对w的导数是：
-</p>
-$$
-\frac{\partial L}{\partial w} = 0 - 2X^\top y + 2X^\top X w\\= 2X^\top X w - 2X^\top y
-$$<p>
-零其为0，得
-</p>
-$$
-X^⊤Xw=X^⊤y
-$$<p>
-两边左乘
-</p>
-$$
-(𝑋^⊤𝑋)^{−1}
-$$<p>
-得到
-</p>
-$$
-w=(X^⊤X)^{−1}X^⊤y
-$$<hr>
-<h2 id="附">附
-</h2><p><strong>矩阵相乘展开：</strong>
-</p>
-$$
-(a−b)^⊤(a−b)=a^⊤a−a^⊤b−b^⊤a+b^⊤b\\因为𝑎^⊤𝑏和𝑏^⊤𝑎是标量（它们互为转置，结果相同），所以上面中间两项可以合并为：\\𝑎⊤𝑎−2𝑎⊤𝑏+𝑏⊤𝑏
-$$<p>
-<strong>矩阵求导基础：</strong>
-</p>
-$$
-\frac{\partial}{\partial w}(w^\top A w) = 2Aw\quad（其中 A 是对称矩阵）
-$$$$
-\frac{\partial}{\partial w}(b^\top w) = b\quad（b 是和 w 维度相同的向量）
-$$
+<h2 id="step1">Step1
+</h2><p>创建一个名为“d2l_env”的虚拟环境并激活（推荐 Python 3.9，兼容性最佳）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">d2l_env</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.9</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">activate</span> <span class="n">d2l_env</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="step2">Step2
+</h2><p>使用pip安装pytorch（最新版的pytorch已经不支持conda安装，故采用pip）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span> <span class="n">torchvision</span> <span class="n">torchaudio</span> <span class="o">--</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">cu121</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="step3">Step3
+</h2><p>使用conda安装常见相关依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">install</span> <span class="n">matplotlib</span> <span class="n">pandas</span> <span class="n">jupyter</span> <span class="n">ipykernel</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="step4">Step4
+</h2><p>使用pip安装指定版本的d2l包：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">d2l</span><span class="o">==</span><span class="mf">1.0.2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="step5">Step5
+</h2><p>将这个虚拟环境加入jupyter notebook内核：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ipykernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span> <span class="n">d2l_env</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span> <span class="s2">&#34;Python (d2l_env)&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -459,9 +426,7 @@ $$
     
     <section class="article-tags">
         
-            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-        
-            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+            <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</a>
         
     </section>
 
@@ -516,6 +481,30 @@ $$
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.73d1097537c552799e9dce0036560efc_hu_d14ecb710619000b.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 线性回归解析解的推导"
+                        
+                        data-hash="md5-c9EJdTfFUnmenc4ANlYO/A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">线性回归解析解的推导</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
@@ -584,30 +573,6 @@ $$
 
         <div class="article-details">
             <h2 class="article-title">Dijkstra算法原理及Python实现</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/">
-        
-        
-            <div class="article-image">
-                <img src="/p/%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%8C%85%E5%90%ABd2l%E5%8C%85/index.ac2f94842eec6bb87a63aeae22e82f41_hu_1d9d96c2f3ab63c8.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 创建一个深度学习虚拟环境（包含d2l包）"
-                        
-                        data-hash="md5-rC&#43;UhC7sa7h6Y66uIugvQQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">创建一个深度学习虚拟环境（包含d2l包）</h2>
         </div>
     </a>
 </article>
