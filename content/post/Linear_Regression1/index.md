@@ -1,8 +1,8 @@
 ---
-date : '2025-04-22T14:44:25+08:00'
+date : '2025-08-05T14:44:25+08:00'
 draft : false
 title : '线性回归解析解的推导'
-image: index.png
+image: index.jpg
 categories:
   - 学习
 tags:

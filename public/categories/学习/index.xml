@@ -7,7 +7,177 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Wang Suyu</copyright>
-        <lastBuildDate>Sat, 26 Apr 2025 14:44:25 +0800</lastBuildDate><atom:link href="https://example.com/categories/%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 05 Aug 2025 14:44:25 +0800</lastBuildDate><atom:link href="https://example.com/categories/%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>线性回归解析解的推导</title>
+        <link>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</link>
+        <pubDate>Tue, 05 Aug 2025 14:44:25 +0800</pubDate>
+        
+        <guid>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</guid>
+        <description>&lt;img src="https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.jpg" alt="Featured image of post 线性回归解析解的推导" /&gt;&lt;h1 id=&#34;创建一个深度学习虚拟环境包含d2l包&#34;&gt;创建一个深度学习虚拟环境（包含d2l包）
+&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;step1&#34;&gt;Step1
+&lt;/h2&gt;&lt;p&gt;创建一个名为“d2l_env”的虚拟环境并激活（推荐 Python 3.9，兼容性最佳）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;create&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d2l_env&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;3.9&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;activate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d2l_env&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;step2&#34;&gt;Step2
+&lt;/h2&gt;&lt;p&gt;使用pip安装pytorch（最新版的pytorch已经不支持conda安装，故采用pip）：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pip&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torchvision&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torchaudio&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;download&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pytorch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;org&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;whl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cu121&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;step3&#34;&gt;Step3
+&lt;/h2&gt;&lt;p&gt;使用conda安装常见相关依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;conda&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;matplotlib&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pandas&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jupyter&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipykernel&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;step4&#34;&gt;Step4
+&lt;/h2&gt;&lt;p&gt;使用pip安装指定版本的d2l包：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pip&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d2l&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0.2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;step5&#34;&gt;Step5
+&lt;/h2&gt;&lt;p&gt;将这个虚拟环境加入jupyter notebook内核：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;python&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipykernel&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d2l_env&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Python (d2l_env)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>线性回归解析解的推导</title>
+        <link>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</link>
+        <pubDate>Tue, 05 Aug 2025 14:44:25 +0800</pubDate>
+        
+        <guid>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</guid>
+        <description>&lt;img src="https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.jpg" alt="Featured image of post 线性回归解析解的推导" /&gt;&lt;h1 id=&#34;线性回归解析解的推导&#34;&gt;线性回归解析解的推导
+&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;问题形式化&#34;&gt;问题形式化
+&lt;/h2&gt;&lt;p&gt;我们要做的是：
+首先给定一组数据
+&lt;/p&gt;
+$$
+(X,y)\quad其中X∈R^{n×d}，y∈R^n
+$$&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;要拟合一个线性模型
+&lt;/p&gt;
+$$
+y=Xw+b
+$$&lt;p&gt;
+找到使预测和真实值之间&lt;strong&gt;均方误差最小&lt;/strong&gt;的&lt;strong&gt;w&lt;/strong&gt;和&lt;strong&gt;b&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;其次，把每个样本的特征后面加上一列全是1的列，这样就可以把&lt;strong&gt;b&lt;/strong&gt;作为&lt;strong&gt;w&lt;/strong&gt;的一部分处理了。&lt;/p&gt;
+&lt;p&gt;所以，如果原始 &lt;strong&gt;X&lt;/strong&gt; 是 n×d 矩阵，我们构造
+&lt;/p&gt;
+$$
+{X} = [X \quad \mathbf{1}]
+$$&lt;p&gt;其中 &lt;strong&gt;1&lt;/strong&gt;是 n×1 的全1列向量。
+此时参数
+&lt;/p&gt;
+$$
+~\tilde{w} 为(d+1) \times 1向量，最后一个元素就是b
+$$&lt;hr&gt;
+&lt;h2 id=&#34;写出目标函数&#34;&gt;写出目标函数
+&lt;/h2&gt;&lt;p&gt;线性回归的目标是最小化残差平方和（MSE）：
+&lt;/p&gt;
+$$
+L(\tilde{w}) = \| y - \tilde{X}\tilde{w} \|^2
+$$&lt;p&gt;
+将其写成矩阵相乘的形式：
+&lt;/p&gt;
+$$
+L(w)=∥y−Xw∥^2=(y−Xw) ^⊤(y−Xw)
+$$&lt;p&gt;
+展开目标函数为：
+&lt;/p&gt;
+$$
+L(w)=y^⊤y−2y^⊤Xw+w^⊤X^⊤Xw
+$$&lt;p&gt;
+其中：
+&lt;/p&gt;
+$$
+𝑦^⊤𝑦y^⊤y 是常数项
+$$$$
+−2𝑦^⊤𝑋𝑤−2y^⊤Xw 是一次项
+$$$$
+w^⊤X^⊤Xw 是二次项
+$$&lt;hr&gt;
+&lt;h2 id=&#34;解出解析解&#34;&gt;解出解析解
+&lt;/h2&gt;&lt;p&gt;现在来&lt;strong&gt;对每一项分别求导&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+y^\top y：跟w无关，导数是0
+$$$$
+-2y^\top Xw：对w求导，就是-2X^\top y
+$$$$
+w^\top X^\top Xw ：对w求导，就是 2X^\top X w
+$$&lt;hr&gt;
+&lt;p&gt;这样，整个损失函数对w的导数是：
+&lt;/p&gt;
+$$
+\frac{\partial L}{\partial w} = 0 - 2X^\top y + 2X^\top X w\\= 2X^\top X w - 2X^\top y
+$$&lt;p&gt;
+零其为0，得
+&lt;/p&gt;
+$$
+X^⊤Xw=X^⊤y
+$$&lt;p&gt;
+两边左乘
+&lt;/p&gt;
+$$
+(𝑋^⊤𝑋)^{−1}
+$$&lt;p&gt;
+得到
+&lt;/p&gt;
+$$
+w=(X^⊤X)^{−1}X^⊤y
+$$&lt;hr&gt;
+&lt;h2 id=&#34;附&#34;&gt;附
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;矩阵相乘展开：&lt;/strong&gt;
+&lt;/p&gt;
+$$
+(a−b)^⊤(a−b)=a^⊤a−a^⊤b−b^⊤a+b^⊤b\\因为𝑎^⊤𝑏和𝑏^⊤𝑎是标量（它们互为转置，结果相同），所以上面中间两项可以合并为：\\𝑎⊤𝑎−2𝑎⊤𝑏+𝑏⊤𝑏
+$$&lt;p&gt;
+&lt;strong&gt;矩阵求导基础：&lt;/strong&gt;
+&lt;/p&gt;
+$$
+\frac{\partial}{\partial w}(w^\top A w) = 2Aw\quad（其中 A 是对称矩阵）
+$$$$
+\frac{\partial}{\partial w}(b^\top w) = b\quad（b 是和 w 维度相同的向量）
+$$</description>
+        </item>
+        <item>
         <title>Bellman-Ford算法原理及Python实现</title>
         <link>https://example.com/p/bellman-ford%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8Apython%E5%AE%9E%E7%8E%B0/</link>
         <pubDate>Sat, 26 Apr 2025 14:44:25 +0800</pubDate>
@@ -916,108 +1086,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        </item>
-        <item>
-        <title>线性回归解析解的推导</title>
-        <link>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</link>
-        <pubDate>Tue, 22 Apr 2025 14:44:25 +0800</pubDate>
-        
-        <guid>https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/</guid>
-        <description>&lt;img src="https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.png" alt="Featured image of post 线性回归解析解的推导" /&gt;&lt;h1 id=&#34;线性回归解析解的推导&#34;&gt;线性回归解析解的推导
-&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&#34;问题形式化&#34;&gt;问题形式化
-&lt;/h2&gt;&lt;p&gt;我们要做的是：
-首先给定一组数据
-&lt;/p&gt;
-$$
-(X,y)\quad其中X∈R^{n×d}，y∈R^n
-$$&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;要拟合一个线性模型
-&lt;/p&gt;
-$$
-y=Xw+b
-$$&lt;p&gt;
-找到使预测和真实值之间&lt;strong&gt;均方误差最小&lt;/strong&gt;的&lt;strong&gt;w&lt;/strong&gt;和&lt;strong&gt;b&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;其次，把每个样本的特征后面加上一列全是1的列，这样就可以把&lt;strong&gt;b&lt;/strong&gt;作为&lt;strong&gt;w&lt;/strong&gt;的一部分处理了。&lt;/p&gt;
-&lt;p&gt;所以，如果原始 &lt;strong&gt;X&lt;/strong&gt; 是 n×d 矩阵，我们构造
-&lt;/p&gt;
-$$
-{X} = [X \quad \mathbf{1}]
-$$&lt;p&gt;其中 &lt;strong&gt;1&lt;/strong&gt;是 n×1 的全1列向量。
-此时参数
-&lt;/p&gt;
-$$
-~\tilde{w} 为(d+1) \times 1向量，最后一个元素就是b
-$$&lt;hr&gt;
-&lt;h2 id=&#34;写出目标函数&#34;&gt;写出目标函数
-&lt;/h2&gt;&lt;p&gt;线性回归的目标是最小化残差平方和（MSE）：
-&lt;/p&gt;
-$$
-L(\tilde{w}) = \| y - \tilde{X}\tilde{w} \|^2
-$$&lt;p&gt;
-将其写成矩阵相乘的形式：
-&lt;/p&gt;
-$$
-L(w)=∥y−Xw∥^2=(y−Xw) ^⊤(y−Xw)
-$$&lt;p&gt;
-展开目标函数为：
-&lt;/p&gt;
-$$
-L(w)=y^⊤y−2y^⊤Xw+w^⊤X^⊤Xw
-$$&lt;p&gt;
-其中：
-&lt;/p&gt;
-$$
-𝑦^⊤𝑦y^⊤y 是常数项
-$$$$
-−2𝑦^⊤𝑋𝑤−2y^⊤Xw 是一次项
-$$$$
-w^⊤X^⊤Xw 是二次项
-$$&lt;hr&gt;
-&lt;h2 id=&#34;解出解析解&#34;&gt;解出解析解
-&lt;/h2&gt;&lt;p&gt;现在来&lt;strong&gt;对每一项分别求导&lt;/strong&gt;：
-&lt;/p&gt;
-$$
-y^\top y：跟w无关，导数是0
-$$$$
--2y^\top Xw：对w求导，就是-2X^\top y
-$$$$
-w^\top X^\top Xw ：对w求导，就是 2X^\top X w
-$$&lt;hr&gt;
-&lt;p&gt;这样，整个损失函数对w的导数是：
-&lt;/p&gt;
-$$
-\frac{\partial L}{\partial w} = 0 - 2X^\top y + 2X^\top X w\\= 2X^\top X w - 2X^\top y
-$$&lt;p&gt;
-零其为0，得
-&lt;/p&gt;
-$$
-X^⊤Xw=X^⊤y
-$$&lt;p&gt;
-两边左乘
-&lt;/p&gt;
-$$
-(𝑋^⊤𝑋)^{−1}
-$$&lt;p&gt;
-得到
-&lt;/p&gt;
-$$
-w=(X^⊤X)^{−1}X^⊤y
-$$&lt;hr&gt;
-&lt;h2 id=&#34;附&#34;&gt;附
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;矩阵相乘展开：&lt;/strong&gt;
-&lt;/p&gt;
-$$
-(a−b)^⊤(a−b)=a^⊤a−a^⊤b−b^⊤a+b^⊤b\\因为𝑎^⊤𝑏和𝑏^⊤𝑎是标量（它们互为转置，结果相同），所以上面中间两项可以合并为：\\𝑎⊤𝑎−2𝑎⊤𝑏+𝑏⊤𝑏
-$$&lt;p&gt;
-&lt;strong&gt;矩阵求导基础：&lt;/strong&gt;
-&lt;/p&gt;
-$$
-\frac{\partial}{\partial w}(w^\top A w) = 2Aw\quad（其中 A 是对称矩阵）
-$$$$
-\frac{\partial}{\partial w}(b^\top w) = b\quad（b 是和 w 维度相同的向量）
-$$</description>
         </item>
         <item>
         <title>Dijkstra算法原理及Python实现</title>
