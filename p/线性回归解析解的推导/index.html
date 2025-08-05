@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$$$\n$$\n要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n">
 <title>线性回归解析解的推导</title>
 
 <link rel='canonical' href='https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/'>
 
 <link rel="stylesheet" href="/scss/style.min.76d56cb8dfd27db635f813412aada78a21b66f7863415f1fa2503126dbbf502d.css"><meta property='og:title' content="线性回归解析解的推导">
-<meta property='og:description' content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$$$\n$$\n要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n">
+<meta property='og:description' content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n">
 <meta property='og:url' content='https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/'>
 <meta property='og:site_name' content='王涑毓的个人博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='算法' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-08-04T14:44:25&#43;08:00'/><meta property='article:modified_time' content='2025-08-04T14:44:25&#43;08:00'/><meta property='og:image' content='https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.png' />
 <meta name="twitter:title" content="线性回归解析解的推导">
-<meta name="twitter:description" content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$$$\n$$\n要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="线性回归解析解的推导 问题形式化 我们要做的是： 首先给定一组数据 $$ (X,y)\\quad其中X∈R^{n×d}，y∈R^n $$要拟合一个线性模型 $$ y=Xw+b $$ 找到使预测和真实值之间均方误差最小的w和b。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://example.com/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -281,10 +281,10 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/">
-                <img src="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_419d4caa948a2b41.png"
-                        srcset="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_419d4caa948a2b41.png 800w, /p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_9e95beb15ad3c24d.png 1600w"
+                <img src="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_aa06cabd6b3d1f73.png"
+                        srcset="/p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_aa06cabd6b3d1f73.png 800w, /p/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E8%A7%A3%E6%9E%90%E8%A7%A3%E7%9A%84%E6%8E%A8%E5%AF%BC/index_hu_23cc9dfc4b7f73fc.png 1600w"
                         width="800" 
-                        height="193" 
+                        height="127" 
                         loading="lazy"
                         alt="Featured image of post 线性回归解析解的推导" />
                 
@@ -365,9 +365,7 @@
 </p>
 $$
 (X,y)\quad其中X∈R^{n×d}，y∈R^n
-$$<p>$$</p>
-<p>$$</p>
-<p>要拟合一个线性模型
+$$<p>要拟合一个线性模型
 </p>
 $$
 y=Xw+b

@@ -21,9 +21,7 @@
 &lt;/p&gt;
 $$
 (X,y)\quad其中X∈R^{n×d}，y∈R^n
-$$&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;要拟合一个线性模型
+$$&lt;p&gt;要拟合一个线性模型
 &lt;/p&gt;
 $$
 y=Xw+b
