@@ -233,4 +233,4 @@ predict_ch3(net, test_iter)
 
 ## 运行结果
 
-![result](E:\BLOG_copy\wsyblog\content\post\d2l_3\result.png)
+![result](result.png)
