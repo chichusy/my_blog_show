@@ -1,7 +1,7 @@
 ---
 date : '2025-08-08T10:44:25+08:00'
 draft : false
-title : '3.7. softmax回归的简洁实现'
+title : '动手学深度学习-3.7. softmax回归的简洁实现'
 image: index.jpg
 categories:
   - 学习
@@ -9,7 +9,7 @@ tags:
   - 工程实践
   - 动手学深度学习
 ---
-# 3.7. softmax回归的简洁实现
+# 动手学深度学习-3.7. softmax回归的简洁实现
 
 ---
 

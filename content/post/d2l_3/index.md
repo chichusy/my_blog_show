@@ -1,7 +1,7 @@
 ---
 date : '2025-08-07T14:44:25+08:00'
 draft : false
-title : '3.6. softmax回归的从零开始实现'
+title : '动手学深度学习-3.6. softmax回归的从零开始实现'
 image: index.jpg
 categories:
   - 学习
@@ -9,7 +9,7 @@ tags:
   - 工程实践
   - 动手学深度学习
 ---
-# 3.6. softmax回归的从零开始实现
+# 动手学深度学习-3.6. softmax回归的从零开始实现
 
 ---
 
